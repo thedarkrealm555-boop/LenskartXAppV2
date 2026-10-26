@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lenskart Home</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;family=Mulish:wght@400;500;600;700&amp;display=swap">
+<style>
+  body { margin: 0; font-family: 'Proxima Nova', Mulish, system-ui, sans-serif; }
+  a { color: #000000; text-decoration: none; }
+  .sx { -ms-overflow-style: none; scrollbar-width: none; }
+  .sx::-webkit-scrollbar { display: none; }
+  @keyframes mq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .mq { animation: mq 22s linear infinite; }
+</style>
+</helmet>
+
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; background: #FFFFFF; position: relative">
+
+  <!-- HEADER -->
+  <header style="flex-shrink: 0; background: #FFFFFF; padding: 13px 20px 11px; display: flex; align-items: center; justify-content: space-between; gap: 10px">
+    <button type="button" style="background: none; border: 0; padding: 0; cursor: pointer; text-align: left; min-width: 0">
+      <span style="display: block; font-family: 'Proxima Nova', Mulish, sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.2em; color: #767676; text-transform: uppercase">Deliver to</span>
+      <span style="display: flex; align-items: center; gap: 5px; margin-top: 3px">
+        <span style="font-family: 'Proxima Nova', Mulish, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.01em; color: #000000; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{deliverLine}}</span>
+        <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="m2 4 3 3 3-3" stroke="#000000" stroke-width="1.2"></path></svg>
+      </span>
+    </button>
+    <div style="display: flex; align-items: center; gap: 13px; flex: 0 0 auto">
+      <button type="button" onClick="{{toggleGold}}" style="{{goldChipStyle}}">{{goldChipLabel}}</button>
+      <button type="button" aria-label="Search" style="background: none; border: 0; padding: 0; cursor: pointer; display: flex">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.6" stroke="#000000" stroke-width="1.2"></circle><path d="m12.3 12.3 3.2 3.2" stroke="#000000" stroke-width="1.2" stroke-linecap="round"></path></svg>
+      </button>
+      <button type="button" aria-label="Wishlist" style="background: none; border: 0; padding: 0; cursor: pointer; display: flex">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 15.4C9 15.4 2.2 11.4 2.2 6.9A3.4 3.4 0 0 1 9 5.4a3.4 3.4 0 0 1 6.8 1.5c0 4.5-6.8 8.5-6.8 8.5Z" stroke="#000000" stroke-width="1.2" stroke-linejoin="round"></path></svg>
+      </button>
+      <button type="button" aria-label="Cart" style="background: none; border: 0; padding: 0; cursor: pointer; display: flex; position: relative">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3.6 5.4h10.8l-.9 10H4.5l-.9-10Z" stroke="#000000" stroke-width="1.2" stroke-linejoin="round"></path><path d="M6.3 7.1V4.7a2.7 2.7 0 0 1 5.4 0v2.4" stroke="#000000" stroke-width="1.2"></path></svg>
+        <span style="position: absolute; top: -3px; right: -4px; min-width: 13px; height: 13px; border-radius: 7px; background: #000000; color: #FFFFFF; font-family: 'Proxima Nova', Mulish, sans-serif; font-size: 8px; font-weight: 700; line-height: 13px; text-align: center; padding: 0 2px; box-sizing: border-box">2</span>
+      </button>
+      <button type="button" aria-label="Profile" style="background: none; border: 0; padding: 0; cursor: pointer; display: flex">
+        <svg width="17" height="17" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="6.3" r="2.9" stroke="#000000" stroke-width="1.2"></circle><path d="M3.3 15.4a5.7 5.7 0 0 1 11.4 0" stroke="#000000" stroke-width="1.2" stroke-linecap="round"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="sx" style="flex: 1; min-height: 0; overflow-y: auto">
+
+    <!-- HERO — tap the word -->
+    <section style="position: relative; height: 524px; background: #000000">
+      <img src="./assets/5f429995b65e5ea1465ccbf6483105e9.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 28% 50%">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 62%)"></div>
+      <div style="position: absolute; left: 20px; right: 20px; bottom: 26px">
+        <h1 style="margin: 0 0 18px; font-family: 'Playfair Display', Georgia, serif; font-size: 46px; line-height: 0.98; font-weight: 400; letter-spacing: -0.02em; color: #FFFFFF">Frames for<br>the <button type="button" onClick="{{cycleHero}}" style="font-family: 'Playfair Display', Georgia, serif; font-size: 46px; line-height: 0.98; font-style: italic; font-weight: 400; color: #FFFFFF; background: none; border: 0; border-bottom: 1px solid #FFFFFF; padding: 0; cursor: pointer; letter-spacing: -0.02em">{{heroWord}}</button></h1>
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px">
+          <p style="margin: 0; font-size: 11px; letter-spacing: 0.14em; color: #A6A6A6; text-transform: uppercase">{{heroNote}}</p>
+          <a href="#ix" style="font-family: 'Playfair Display', Georgia, serif; font-size: 15px; font-style: italic; color: #FFFFFF; border-bottom: 1px solid #FFFFFF; padding-bottom: 2px">Shop it</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div style="overflow: hidden; border-bottom: 1px solid #E0E0E0; padding: 13px 0; background: #FFFFFF">
+      <div class="mq" style="display: flex; width: max-content; white-space: nowrap; font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: #000000">
+        <span style="flex: 0 0 auto; padding-right: 28px">Eyeglasses &nbsp;·&nbsp; Sunglasses &nbsp;·&nbsp; Contact lenses &nbsp;·&nbsp; Power sun &nbsp;·&nbsp; Kids &nbsp;·&nbsp; Reading &nbsp;·&nbsp;</span>
+        <span style="flex: 0 0 auto; padding-right: 28px">Eyeglasses &nbsp;·&nbsp; Sunglasses &nbsp;·&nbsp; Contact lenses &nbsp;·&nbsp; Power sun &nbsp;·&nbsp; Kids &nbsp;·&nbsp; Reading &nbsp;·&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- HUSTLR -->
+    <section style="position: relative; height: 560px; background: #000000">
+      <img src="./assets/73e4d92127c5323a93839c8b6cde56cc.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 58%)"></div>
+      <div style="position: absolute; left: 20px; right: 20px; bottom: 28px">
+        <p style="margin: 0 0 10px; font-size: 10px; letter-spacing: 0.26em; color: #FFFFFF; text-transform: uppercase">Hustlr</p>
+        <h2 style="margin: 0 0 18px; font-family: 'Playfair Display', Georgia, serif; font-size: 44px; line-height: 0.98; font-weight: 400; color: #FFFFFF">Your first pair<br><em style="font-style: italic">is free</em></h2>
+        <a href="#ix" style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; color: #FFFFFF; border-bottom: 1px solid #FFFFFF; padding-bottom: 3px">Claim now</a>
+      </div>
+    </section>
+
+    <!-- SHOP -->
+    <section id="ix" style="padding: 34px 0 36px">
+      <div style="padding: 0 20px 16px; display: flex; align-items: flex-end; justify-content: space-between; gap: 14px">
+        <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 400; color: #000000">Shop</h2>
+        <a href="#ix" style="font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #000000; border-bottom: 1px solid #000000; padding-bottom: 3px">Explore now</a>
+      </div>
+      <div class="sx" style="display: flex; gap: 6px; overflow-x: auto; padding: 0 20px 18px">
+        <sc-for list="{{shopTabs}}" as="g" hint-placeholder-count="4">
+          <button type="button" onClick="{{g.pick}}" style="{{g.style}}">{{g.label}}</button>
+        </sc-for>
+      </div>
+      <div class="sx" style="display: flex; gap: 3px; overflow-x: auto; padding: 0 0 0 20px">
+        <sc-for list="{{shopCards}}" as="s" hint-placeholder-count="3">
+          <a href="#ix" style="flex: 0 0 auto; width: 300px">
+            <span style="display: block; width: 300px; height: 400px; background: #F2F2F2; overflow: hidden">
+              <img src="{{s.src}}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: {{s.pos}}">
+            </span>
+            <span style="display: block; margin-top: 14px; font-family: 'Playfair Display', Georgia, serif; font-size: 27px; line-height: 1.05; color: #000000">{{s.name}}</span>
+            <span style="display: block; margin-top: 5px; font-size: 10px; letter-spacing: 0.16em; color: #767676; text-transform: uppercase">{{s.note}}</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- FIND YOUR FRAME -->
+    <section style="padding: 32px 0 34px; background: #FFFFFF">
+      <div style="padding: 0 20px 22px">
+        <p style="margin: 0 0 7px; font-size: 10px; letter-spacing: 0.26em; color: #767676; text-transform: uppercase">By style</p>
+        <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 400; line-height: 1.02; color: #000000">Find your<br><em style="font-style: italic">frame</em></h2>
+      </div>
+      <div style="padding: 0 20px">
+        <sc-for list="{{styleRows}}" as="r" hint-placeholder-count="4">
+          <div style="border-top: 1px solid #E0E0E0">
+            <button type="button" onClick="{{r.toggle}}" style="width: 100%; background: none; border: 0; padding: 16px 0; cursor: pointer; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; text-align: left">
+              <span style="display: flex; align-items: baseline; gap: 12px; min-width: 0">
+                <span style="font-family: 'Proxima Nova', Mulish, sans-serif; font-size: 10px; letter-spacing: 0.12em; color: #767676">{{r.num}}</span>
+                <span style="{{r.titleStyle}}">{{r.title}}</span>
+              </span>
+              <span style="display: flex; align-items: baseline; gap: 12px; flex: 0 0 auto">
+                <span style="font-family: 'Proxima Nova', Mulish, sans-serif; font-size: 10px; letter-spacing: 0.14em; color: #767676; text-transform: uppercase">{{r.chosen}}</span>
+                <span style="font-family: 'Proxima Nova', Mulish, sans-serif; font-size: 16px; color: #767676; line-height: 1">{{r.mark}}</span>
+              </span>
+            </button>
+            <div style="{{r.railWrap}}">
+              <div class="sx" style="display: flex; gap: 3px; overflow-x: auto; margin: 0 -20px; padding: 0 20px 20px">
+                <sc-for list="{{r.options}}" as="op" hint-placeholder-count="4">
+                  <button type="button" onClick="{{op.pick}}" style="{{op.cardStyle}}">
+                    <span style="{{op.photoWrap}}">
+                      <img src="{{op.src}}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block">
+                    </span>
+                    <span style="{{op.swatchStyle}}"></span>
+                    <span style="{{op.artStyle}}">
+                      <span style="{{op.lensStyle}}"></span>
+                      <span style="{{op.bridgeStyle}}"></span>
+                      <span style="{{op.lensStyle}}"></span>
+                    </span>
+                    <span style="{{op.labelStyle}}">{{op.label}}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+        <div style="border-top: 1px solid #E0E0E0; padding-top: 18px; margin-top: 0">
+          <p style="margin: 0 0 14px; font-family: 'Playfair Display', Georgia, serif; font-size: 22px; line-height: 1.25; color: #000000">{{styleSummary}}</p>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+            <a href="#ix" style="font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #000000; border-bottom: 1px solid #000000; padding-bottom: 3px">Shop {{filterCount}}</a>
+            <button type="button" onClick="{{clearFilters}}" style="background: none; border: 0; padding: 0 0 2px; cursor: pointer; border-bottom: 1px solid #767676; font-family: 'Proxima Nova', Mulish, sans-serif; font-size: 10px; letter-spacing: 0.16em; color: #767676; text-transform: uppercase">Clear all</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEW IN -->
+    <section style="padding: 32px 0 36px">
+      <div style="padding: 0 20px 16px; display: flex; align-items: flex-end; justify-content: space-between; gap: 14px">
+        <div>
+          <p style="margin: 0 0 7px; font-size: 10px; letter-spacing: 0.26em; color: #767676; text-transform: uppercase">Just dropped</p>
+          <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 400; color: #000000">New in</h2>
+        </div>
+        <a href="#ix" style="font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #000000; border-bottom: 1px solid #000000; padding-bottom: 3px">Shop now</a>
+      </div>
+      <div class="sx" style="display: flex; gap: 3px; overflow-x: auto; padding: 0 0 0 20px">
+        <sc-for list="{{newIn}}" as="n" hint-placeholder-count="5">
+          <a href="#ix" style="flex: 0 0 auto; width: 248px">
+            <span style="display: block; width: 248px; height: 330px; background: #F2F2F2; overflow: hidden">
+              <img src="{{n.src}}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: {{n.pos}}">
+            </span>
+            <span style="display: block; margin-top: 13px; font-family: 'Playfair Display', Georgia, serif; font-size: 25px; line-height: 1.08; color: #000000">{{n.name}}</span>
+            <span style="display: block; margin-top: 4px; font-size: 10px; letter-spacing: 0.16em; color: #767676; text-transform: uppercase">{{n.house}}</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- WHAT'S IT FOR -->
+    <section style="padding: 0 0 34px">
+      <div style="padding: 0 20px 18px">
+        <p style="margin: 0 0 7px; font-size: 10px; letter-spacing: 0.26em; color: #767676; text-transform: uppercase">Use case</p>
+        <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 400; line-height: 1.02; color: #000000">What's it<br><em style="font-style: italic">for?</em></h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px">
+        <sc-for list="{{uses}}" as="u" hint-placeholder-count="5">
+          <a href="#ix" style="{{u.wrap}}">
+            <img src="{{u.src}}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: {{u.pos}}">
+            <span style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 56%)"></span>
+            <span style="position: absolute; left: 14px; right: 14px; bottom: 14px">
+              <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 21px; line-height: 1.1; color: #FFFFFF">{{u.name}}</span>
+              <span style="display: block; margin-top: 4px; font-size: 9px; letter-spacing: 0.14em; color: #D6D6D6; text-transform: uppercase">{{u.note}}</span>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- FILLER 01 -->
+    <section style="margin: 24px 0 34px; position: relative; height: 460px; background: #141414">
+      <img src="./assets/cbf16428b239823f87625fe1c8e01cd5.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0) 55%)"></div>
+      <div style="position: absolute; left: 20px; right: 20px; bottom: 24px">
+        <p style="margin: 0 0 14px; font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-style: italic; line-height: 1.1; color: #FFFFFF">Seen from<br>across the room</p>
+        <a href="#ix" style="display: inline-block; border: 1px solid #FFFFFF; padding: 12px 24px; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; color: #FFFFFF; text-transform: uppercase">Shop now</a>
+      </div>
+    </section>
+
+    <!-- COLLABS — horizontal -->
+    <section style="padding: 30px 0 36px; background: #FFFFFF">
+      <h2 style="margin: 0 20px 18px; font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 400; color: #000000">Collabs</h2>
+      <div class="sx" style="display: flex; gap: 3px; overflow-x: auto; padding: 0 0 0 20px">
+        <sc-for list="{{collabs}}" as="c" hint-placeholder-count="3">
+          <a href="#ix" style="flex: 0 0 auto; width: 272px">
+            <span style="position: relative; display: block; width: 272px; height: 368px; background: #141414; overflow: hidden">
+              <img src="{{c.src}}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: {{c.pos}}">
+              <span style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0) 50%)"></span>
+              <span style="position: absolute; left: 16px; right: 16px; bottom: 16px">
+                <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-style: italic; color: #FFFFFF">{{c.name}}</span>
+                <span style="display: block; margin-top: 5px; font-size: 10px; letter-spacing: 0.16em; color: #D6D6D6; text-transform: uppercase">{{c.house}}</span>
+              </span>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- SHOP BY OCCASION -->
+    <section style="padding: 0 0 36px">
+      <div style="padding: 0 20px 16px; display: flex; align-items: flex-end; justify-content: space-between; gap: 14px">
+        <div>
+          <p style="margin: 0 0 7px; font-size: 10px; letter-spacing: 0.26em; color: #767676; text-transform: uppercase">Shop by occasion</p>
+          <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 400; line-height: 1.02; color: #000000">Where are you<br><em style="font-style: italic">wearing them?</em></h2>
+        </div>
+        <a href="#ix" style="font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #000000; border-bottom: 1px solid #000000; padding-bottom: 3px; white-space: nowrap">Explore now</a>
+      </div>
+      <div class="sx" style="display: flex; gap: 3px; overflow-x: auto; padding: 0 0 0 20px">
+        <sc-for list="{{occasions}}" as="o" hint-placeholder-count="4">
+          <a href="#ix" style="flex: 0 0 auto; width: 240px">
+            <span style="display: block; width: 240px; height: 320px; background: #F2F2F2; overflow: hidden">
+              <img src="{{o.src}}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: {{o.pos}}">
+            </span>
+            <span style="display: block; margin-top: 13px; font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: #000000">{{o.name}}</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- MADE OF -->
+    <section style="background: #000000; padding: 38px 0 38px">
+      <div style="padding: 0 20px 20px; display: flex; align-items: flex-end; justify-content: space-between; gap: 14px">
+        <div>
+          <p style="margin: 0 0 8px; font-size: 10px; letter-spacing: 0.26em; color: #767676; text-transform: uppercase">Made of</p>
+          <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 400; line-height: 1.02; color: #FFFFFF">Frame, lens,<br><em style="font-style: italic">technology</em></h2>
+        </div>
+        <a href="#ix" style="font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #FFFFFF; border-bottom: 1px solid #FFFFFF; padding-bottom: 3px; white-space: nowrap">Explore now</a>
+      </div>
+      <div class="sx" style="display: flex; gap: 3px; overflow-x: auto; padding: 0 0 0 20px">
+        <sc-for list="{{cmf}}" as="m" hint-placeholder-count="3">
+          <a href="#ix" style="flex: 0 0 auto; width: 262px">
+            <span style="display: block; width: 262px; height: 300px; background: #141414; overflow: hidden">
+              <img src="{{m.src}}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: {{m.pos}}; display: block">
+            </span>
+            <span style="display: block; margin-top: 14px; font-size: 9px; letter-spacing: 0.24em; color: #767676; text-transform: uppercase">{{m.kicker}}</span>
+            <span style="display: block; margin-top: 8px; font-family: 'Playfair Display', Georgia, serif; font-size: 25px; line-height: 1.08; color: #FFFFFF">{{m.name}}</span>
+            <span style="display: block; margin-top: 8px; font-size: 11px; line-height: 1.55; color: #A6A6A6">{{m.note}}</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- FOR YOU — shuffle -->
+    <section style="padding: 34px 0 34px">
+      <div style="padding: 0 20px; display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px">
+        <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 400; color: #000000">For you</h2>
+        <button type="button" onClick="{{shuffleProducts}}" style="background: none; border: 0; padding: 0; cursor: pointer; font-family: 'Proxima Nova', Mulish, sans-serif; font-size: 10px; letter-spacing: 0.18em; color: #767676; text-transform: uppercase">Shuffle ↻</button>
+      </div>
+      <p style="margin: 0 20px 18px; font-size: 10px; letter-spacing: 0.14em; color: #767676; text-transform: uppercase">{{forYouNote}}</p>
+      <div class="sx" style="display: flex; gap: 3px; overflow-x: auto; padding: 0 0 2px 20px">
+        <sc-for list="{{products}}" as="p" hint-placeholder-count="4">
+          <a href="#ix" style="flex: 0 0 auto; width: 262px">
+            <span style="display: block; width: 262px; height: 272px; background: #F2F2F2; overflow: hidden">
+              <img src="{{p.src}}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%">
+            </span>
+            <span style="display: block; margin-top: 14px; font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.05; color: #000000">{{p.name}}</span>
+            <span style="display: block; margin-top: 5px; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; color: #000000">{{p.price}}</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- SHOP THE LOOK -->
+    <section style="padding: 0 0 34px">
+      <h2 style="margin: 0 20px 18px; font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 400; color: #000000">Shop the look</h2>
+      <a href="#ix" style="position: relative; display: block; height: 470px; background: #F2F2F2; overflow: hidden; margin-bottom: 3px">
+        <img src="./assets/3370e3dc8694de3384ad4df11ae3cf0a.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%">
+        <span style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0) 46%)"></span>
+        <span style="position: absolute; left: 20px; right: 20px; bottom: 20px">
+          <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-style: italic; color: #FFFFFF">The red edit</span>
+          <span style="display: block; margin-top: 6px; font-size: 10px; letter-spacing: 0.16em; color: #D6D6D6; text-transform: uppercase">Three frames in this look</span>
+          <span style="display: inline-block; margin-top: 14px; border: 1px solid #FFFFFF; padding: 12px 24px; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; color: #FFFFFF; text-transform: uppercase">Shop the look</span>
+        </span>
+      </a>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px">
+        <a href="#ix" style="position: relative; display: block; height: 280px; background: #F2F2F2; overflow: hidden">
+          <img src="./assets/d99dc92d343d4b6c5950950335c2349c.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%">
+        </a>
+        <a href="#ix" style="position: relative; display: block; height: 280px; background: #F2F2F2; overflow: hidden">
+          <img src="./assets/741b8d593fd74ff34cd88bde0c41871f.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%">
+        </a>
+      </div>
+    </section>
+
+    <!-- FILLER 02 -->
+    <section style="margin: 0 0 34px">
+      <div style="height: 480px; background: #141414; overflow: hidden">
+        <img src="./assets/1ec767d537b991699488da670ba87489.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%">
+      </div>
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin: 15px 20px 0">
+        <p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-style: italic; color: #000000">Light enough to forget</p>
+        <a href="#ix" style="font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #000000; border-bottom: 1px solid #000000; padding-bottom: 3px; white-space: nowrap">Shop now</a>
+      </div>
+    </section>
+
+    <!-- BRANDS -->
+    <section style="padding: 34px 0 36px">
+      <div style="padding: 0 20px 16px; display: flex; align-items: flex-end; justify-content: space-between; gap: 14px">
+        <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 400; color: #000000">Brands</h2>
+        <a href="#ix" style="font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #000000; border-bottom: 1px solid #000000; padding-bottom: 3px; white-space: nowrap">Explore now</a>
+      </div>
+      <div class="sx" style="display: flex; gap: 3px; overflow-x: auto; padding: 0 0 0 20px">
+        <sc-for list="{{brands}}" as="b" hint-placeholder-count="6">
+          <a href="#ix" style="flex: 0 0 auto; width: 186px">
+            <span style="display: block; width: 186px; height: 232px; background: #F2F2F2; overflow: hidden">
+              <img src="{{b.src}}" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%">
+            </span>
+            <span style="display: block; margin-top: 11px; font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.1; color: #000000">{{b.name}}</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- BEYOND THE FRAME -->
+    <section style="padding: 0 0 36px">
+      <div style="height: 330px; background: #F2F2F2; overflow: hidden; margin-bottom: 24px">
+        <img src="./assets/9d48ba5108c01242d6bb3f8397369a4d.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%">
+      </div>
+      <div style="padding: 0 20px">
+      <p style="margin: 0 0 7px; font-size: 10px; letter-spacing: 0.26em; color: #767676; text-transform: uppercase">What you get</p>
+      <h2 style="margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 400; color: #000000">Beyond the frame</h2>
+      <div style="border-top: 1px solid #E0E0E0">
+        <sc-for list="{{offers}}" as="o" hint-placeholder-count="4">
+          <a href="#ix" style="display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 18px 0; border-bottom: 1px solid #E0E0E0">
+            <span>
+              <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #000000">{{o.name}}</span>
+              <span style="display: block; margin-top: 4px; font-size: 11px; color: #767676">{{o.note}}</span>
+            </span>
+            <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 18px; font-style: italic; color: #000000; white-space: nowrap">{{o.cta}}</span>
+          </a>
+        </sc-for>
+      </div>
+      </div>
+    </section>
+
+    <!-- FILLER 04 -->
+    <section style="margin: 0 0 32px; position: relative; height: 420px; background: #F2F2F2">
+      <img src="./assets/5e5c8b8ff920d1e20f5f1833e0e99629.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%">
+      <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 42%)"></div>
+      <div style="position: absolute; left: 20px; top: 24px; right: 20px">
+        <p style="margin: 0 0 14px; font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-style: italic; line-height: 1.1; color: #FFFFFF">Every face,<br>a different frame</p>
+        <a href="#ix" style="display: inline-block; border: 1px solid #FFFFFF; padding: 12px 24px; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; color: #FFFFFF; text-transform: uppercase">Explore now</a>
+      </div>
+    </section>
+
+    <!-- GOLD -->
+    <section style="margin: 0 0 36px; background: #000000; padding: 54px 20px 44px; text-align: center">
+      <p style="margin: 0 0 18px; font-size: 10px; letter-spacing: 0.3em; color: #C9A24A; text-transform: uppercase">{{goldState}}</p>
+      <h2 style="margin: 0 0 6px; font-family: 'Playfair Display', Georgia, serif; font-size: 86px; font-weight: 400; line-height: 0.82; letter-spacing: -0.02em; color: #C9A24A">Gold</h2>
+      <p style="margin: 0 auto 30px; max-width: 250px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 20px; line-height: 1.35; color: #FFFFFF">{{goldPitch}}</p>
+      <div style="margin: 0 -20px 32px; height: 230px; overflow: hidden; background: #141414">
+        <img src="./assets/bf720c1422e3ba5f849229d633308fdb.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 58%">
+      </div>
+      <div style="display: flex; justify-content: center; gap: 0; margin-bottom: 36px">
+        <sc-for list="{{goldRows}}" as="g" hint-placeholder-count="3">
+          <span style="flex: 1; padding: 0 6px; border-left: 1px solid #2E2E2E">
+            <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: #FFFFFF">{{g.value}}</span>
+            <span style="display: block; margin-top: 6px; font-size: 9px; line-height: 1.5; letter-spacing: 0.14em; color: #767676; text-transform: uppercase">{{g.label}}</span>
+          </span>
+        </sc-for>
+      </div>
+      <button type="button" onClick="{{toggleGold}}" style="{{goldCtaStyle}}">{{goldCta}}</button>
+    </section>
+
+    <!-- CLOSE -->
+    <section style="background: #FFFFFF; padding: 0 0 36px">
+      <div style="padding: 0 20px 20px; text-align: center">
+        <p style="margin: 0 0 10px; font-size: 10px; letter-spacing: 0.3em; color: #767676; text-transform: uppercase">2,500 stores</p>
+        <h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 36px; font-weight: 400; line-height: 1.0; color: #000000">One free eye test<br><em style="font-style: italic">away from you</em></h2>
+      </div>
+      <div style="height: 300px; background: #F2F2F2; overflow: hidden">
+        <img src="./assets/a25521a99b144dab53f09cf8d447b7d5.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 44%">
+      </div>
+      <div style="padding: 22px 20px 0; text-align: center">
+        <a href="#ix" style="display: inline-block; border: 1px solid #000000; padding: 15px 34px; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; color: #000000; text-transform: uppercase">Book an eye test</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: #000000; padding: 30px 20px 30px">
+
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 14px; padding-bottom: 24px; border-bottom: 1px solid #2E2E2E">
+        <span style="display: block">
+          <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; color: #FFFFFF">Free eye test</span>
+          <span style="display: block; margin-top: 3px; font-size: 10px; letter-spacing: 0.12em; color: #767676; text-transform: uppercase">At home or in store</span>
+        </span>
+        <span style="display: block">
+          <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; color: #FFFFFF">14-day returns</span>
+          <span style="display: block; margin-top: 3px; font-size: 10px; letter-spacing: 0.12em; color: #767676; text-transform: uppercase">No questions asked</span>
+        </span>
+        <span style="display: block">
+          <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; color: #FFFFFF">1-year warranty</span>
+          <span style="display: block; margin-top: 3px; font-size: 10px; letter-spacing: 0.12em; color: #767676; text-transform: uppercase">Frame and lenses</span>
+        </span>
+        <span style="display: block">
+          <span style="display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 17px; color: #FFFFFF">Delivery tomorrow</span>
+          <span style="display: block; margin-top: 3px; font-size: 10px; letter-spacing: 0.12em; color: #767676; text-transform: uppercase">On 400059</span>
+        </span>
+      </div>
+
+      <div style="display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid #2E2E2E">
+        <div style="flex: 1; min-width: 0">
+          <p style="margin: 0 0 11px; font-size: 9px; font-weight: 600; letter-spacing: 0.22em; color: #767676; text-transform: uppercase">Shop</p>
+          <a href="#ix" style="display: block; margin-bottom: 8px; font-size: 12px; color: #FFFFFF">Eyeglasses</a>
+          <a href="#ix" style="display: block; margin-bottom: 8px; font-size: 12px; color: #FFFFFF">Sunglasses</a>
+          <a href="#ix" style="display: block; margin-bottom: 8px; font-size: 12px; color: #FFFFFF">Lenses</a>
+          <a href="#ix" style="display: block; font-size: 12px; color: #FFFFFF">Kids</a>
+        </div>
+        <div style="flex: 1; min-width: 0">
+          <p style="margin: 0 0 11px; font-size: 9px; font-weight: 600; letter-spacing: 0.22em; color: #767676; text-transform: uppercase">Help</p>
+          <a href="#ix" style="display: block; margin-bottom: 8px; font-size: 12px; color: #FFFFFF">Track order</a>
+          <a href="#ix" style="display: block; margin-bottom: 8px; font-size: 12px; color: #FFFFFF">Returns</a>
+          <a href="#ix" style="display: block; margin-bottom: 8px; font-size: 12px; color: #FFFFFF">Eye test</a>
+          <a href="#ix" style="display: block; font-size: 12px; color: #FFFFFF">Stores</a>
+        </div>
+        <div style="flex: 1; min-width: 0">
+          <p style="margin: 0 0 11px; font-size: 9px; font-weight: 600; letter-spacing: 0.22em; color: #767676; text-transform: uppercase">Us</p>
+          <a href="#ix" style="display: block; margin-bottom: 8px; font-size: 12px; color: #FFFFFF">About</a>
+          <a href="#ix" style="display: block; margin-bottom: 8px; font-size: 12px; color: #FFFFFF">Careers</a>
+          <a href="#ix" style="display: block; margin-bottom: 8px; font-size: 12px; color: #FFFFFF">Press</a>
+          <a href="#ix" style="display: block; font-size: 12px; color: #FFFFFF">Gold</a>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 22px 0; border-bottom: 1px solid #2E2E2E">
+        <p style="margin: 0; font-size: 10px; letter-spacing: 0.16em; color: #767676; text-transform: uppercase">2,500 stores in India</p>
+        <span style="display: flex; gap: 14px">
+          <a href="#ix" style="font-size: 10px; letter-spacing: 0.16em; color: #FFFFFF; text-transform: uppercase">Instagram</a>
+          <a href="#ix" style="font-size: 10px; letter-spacing: 0.16em; color: #FFFFFF; text-transform: uppercase">YouTube</a>
+        </span>
+      </div>
+
+      <p style="margin: 20px 0 0; font-size: 9px; line-height: 1.9; letter-spacing: 0.14em; color: #767676; text-transform: uppercase">© 2026 Lenskart &nbsp;·&nbsp; Terms &nbsp;·&nbsp; Privacy</p>
+
+    </footer>
+
+  </main>
+
+  <!-- NAV -->
+  <nav style="flex-shrink: 0; background: #FFFFFF; border-top: 1px solid #E0E0E0; padding: 9px 8px 10px; display: flex; justify-content: space-between; align-items: stretch">
+    <sc-for list="{{nav}}" as="n" hint-placeholder-count="6">
+      <a href="#ix" style="{{n.style}}">
+        <span style="display: flex; height: 19px; align-items: center; justify-content: center">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="{{n.d1}}" stroke="{{n.ink}}" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"></path>
+            <path d="{{n.d2}}" stroke="{{n.ink}}" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"></path>
+          </svg>
+        </span>
+        <span style="{{n.labelStyle}}">{{n.label}}</span>
+      </a>
+    </sc-for>
+  </nav>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#C9A24A","options":["#C9A24A","#000000","#767676","#FFFFFF"],"section":"Gold"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { gold: false, hero: 0, shuffle: 0, gender: 0, shopTab: 0, picks: {}, styleOpen: 0 };
+  }
+
+  renderVals() {
+    const S = this.state;
+    const accent = this.props.accent ?? '#C9A24A';
+    const goldInk = '#8A6B1E';
+    const rupee = (n) => '₹' + n.toLocaleString('en-IN');
+
+    // HERO — tap the word
+    const heroes = [
+      { word: 'wedding', slot: 'IMG-01', note: 'Gold & metal', price: 'from ' + rupee(1200) },
+      { word: 'office', slot: 'IMG-03', note: 'Thin, light, all day', price: 'from ' + rupee(800) },
+      { word: 'sun', slot: 'IMG-04', note: 'Powered sunglasses', price: 'from ' + rupee(1500) },
+      { word: 'screen', slot: 'IMG-05', note: 'Blue-cut, zero power', price: 'from ' + rupee(800) }
+    ];
+    const hero = heroes[S.hero];
+
+    // SHOP — gender drives eyeglasses / sunglasses
+    const genderNames = ['Men', 'Women', 'Kids'];
+    const g = S.gender;
+    const gTag = ['M', 'W', 'K'][g];
+    const gLabel = genderNames[g];
+    const shots = {
+      'EYE-M': './assets/cfb9988c8441ef50fdb2dae22ea852b1.jpg',
+      'SUN-M': './assets/e06e20878b9d4a4817878f84a30126df.jpg',
+      'EYE-W': './assets/3de4156cb3ada31cbf5f21a81cba8620.jpg',
+      'SUN-W': './assets/084df863ca66761d596f631bef03dbb9.jpg',
+      'EYE-K': './assets/81632ba8359e65f1b9cbe3baa10b1ea2.jpg',
+      'SUN-K': './assets/b1952edd1ba4f47d5921688c39d4df7c.jpg',
+      'LENS-01': './assets/295b156c2e06e9434287c8893b337ec3.jpg',
+      'LENS-02': './assets/d8350c57ad9f66efaddee7ee5fe5a573.jpg',
+      'LENS-03': './assets/1e8fbe2483ef0e135b2bf3d9079ca6e2.jpg',
+      'LENS-04': './assets/a31ff6a9fd351c926723c7ddd1b09a5f.jpg',
+      'NEED-01': './assets/86cd08dd9d57469424556e8c1a7a5929.jpg',
+      'NEED-02': './assets/d5b81bd2fad85a6dd70983aeae53b710.jpg',
+      'NEED-03': './assets/4249a5fd39880927c82677ea678fddf2.jpg',
+      'NEED-04': './assets/021ec47d933d879fe364e4e34a279034.jpg',
+      'OCC-01': './assets/ae82d34da0bf5b1259aeb8d8434337fb.jpg',
+      'OCC-02': './assets/04028334075bd89b29e61390fd0f59f9.jpg',
+      'OCC-03': './assets/4c5ab5834df2415db0785d9b6935b498.jpg',
+      'OCC-04': './assets/7391e380c4dd71ff599bfc31e861db1e.jpg',
+      'NEW-01': './assets/385c8d1d11ba0c8a71f7de753e850373.jpg',
+      'NEW-02': './assets/7a99e87bdd124009fff580d990dd03e9.jpg',
+      'NEW-03': './assets/1724e0e83174ca4d9cb59e418f11f4f3.jpg',
+      'NEW-04': './assets/74679c1fdb13160a52063b19eb5509b2.jpg',
+      'BRAND-01': './assets/ea40eb0f2770adf058694e05f1053a5f.jpg',
+      'BRAND-02': './assets/b431346007f5ca95690287bd1cb312fb.jpg',
+      'BRAND-03': './assets/82bcfced847b143ce71325378b7806a4.jpg',
+      'BRAND-04': './assets/c5843994e2d2777187ceb2b143680e8f.jpg',
+      'BRAND-05': './assets/1d63c23a7270528129fe518f22dc2975.jpg',
+      'BRAND-06': './assets/5077e5b695588c3d81f812f2ec23d320.jpg'
+    };
+    const focus = {
+      'EYE-M': '50% 22%', 'SUN-M': '50% 26%',
+      'EYE-W': '50% 26%', 'SUN-W': '50% 30%',
+      'EYE-K': '50% 24%', 'SUN-K': '50% 32%',
+      'OCC-01': '46% 50%', 'OCC-02': '50% 34%',
+      'OCC-03': '50% 28%', 'OCC-04': '50% 38%',
+      'NEW-01': '50% 30%', 'NEW-02': '50% 40%',
+      'NEW-03': '50% 34%', 'NEW-04': '50% 40%',
+      'BRAND-01': '50% 50%', 'BRAND-02': '50% 50%', 'BRAND-03': '50% 50%',
+      'BRAND-04': '50% 50%', 'BRAND-05': '50% 50%', 'BRAND-06': '50% 50%'
+    };
+    const onLenses = S.shopTab === 3;
+    const shopCards = (onLenses
+      ? [
+        { slot: 'LENS-01', name: 'Clear', note: 'Daily & monthly · from ' + rupee(99) },
+        { slot: 'LENS-02', name: 'Colour', note: 'Zero & powered · from ' + rupee(599) },
+        { slot: 'LENS-03', name: 'Solution', note: 'Care & cases · from ' + rupee(149) },
+        { slot: 'LENS-04', name: 'Trial pack', note: 'First-time wearers · ' + rupee(99) }
+      ]
+      : [
+        { name: 'Eyeglasses', note: gLabel + ' · from ' + rupee(800),
+          src: ['./assets/4bd58a0e8fffb62b127a3059f62ad0db.jpg', './assets/379ba04ed071b15fe434d177b131f82f.jpg', shots['EYE-K']][g],
+          pos: ['50% 42%', '50% 38%', focus['EYE-K']][g] },
+        { name: 'Sunglasses', note: gLabel + ' · from ' + rupee(500),
+          src: ['./assets/15f059dfff76cd1f6fcf10d0670e0869.jpg', './assets/9e3c6611c69f8acfd4f73d86bb4022d1.jpg', shots['SUN-K']][g],
+          pos: ['50% 40%', '50% 32%', focus['SUN-K']][g] },
+        { name: 'Screen glasses', note: 'Blue-cut, zero power · from ' + rupee(800),
+          src: './assets/45ed9c687629f0cf185d2144051e2ece.jpg', pos: '50% 36%' }
+      ]
+    ).map((it) => ({ name: it.name, note: it.note, src: it.src || shots[it.slot] || '', pos: it.pos || focus[it.slot] || '50% 45%' }));
+
+    const shopTabs = ['Men', 'Women', 'Kids', 'Contact lenses'].map((name, i) => ({
+      label: name,
+      pick: () => this.setState(i === 3 ? { shopTab: 3 } : { shopTab: i, gender: i }),
+      style: i === S.shopTab
+        ? 'flex: 0 0 auto; background: #000000; color: #FFFFFF; border: 1px solid #000000; padding: 9px 14px; font-family: \'Proxima Nova\', Mulish, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; white-space: nowrap'
+        : 'flex: 0 0 auto; background: none; color: #767676; border: 1px solid #E0E0E0; padding: 9px 14px; font-family: \'Proxima Nova\', Mulish, sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; white-space: nowrap'
+    }));
+
+    // STANDALONE RAILS
+    const newIn = [
+      { name: 'Oval 05', house: 'Vincent Chase', src: './assets/aafaaf3d9e05bb94a60f08bb5db217c4.jpg', pos: '50% 50%' },
+      { name: 'Track 06', house: 'Hustlr', src: './assets/c96fc4409734f52fb3cd2ff5cd982af8.jpg', pos: '62% 48%' },
+      { name: 'Court 07', house: 'Hustlr', src: './assets/1c8a5658060b5745ecafaf7c9d30f5aa.jpg', pos: '50% 48%' },
+      { name: 'Frost 08', house: 'Lenskart Air', src: './assets/aaaab1e8f123e39389c00c10ab69cf29.jpg', pos: '50% 50%' },
+      { name: 'Halo 02', house: 'Vincent Chase', src: shots['NEW-01'], pos: focus['NEW-01'] },
+      { name: 'Mono Rim', house: 'John Jacobs', src: shots['NEW-02'], pos: focus['NEW-02'] }
+    ];
+    const occasions = [
+      { name: 'Wedding', src: './assets/57e9db0f8177e080e391e9607f2533eb.jpg', pos: '50% 48%' },
+      { name: 'Black tie', src: './assets/c61df1d8011a624008387408b7fa33d3.jpg', pos: '50% 20%' },
+      { name: 'Festive', src: shots['OCC-02'], pos: focus['OCC-02'] },
+      { name: 'Travel', src: './assets/7f81c70fa2e58cb099031867f12ea916.jpg', pos: '50% 45%' },
+      { name: 'Road trip', src: './assets/5c432efe66fee18ee2fc2ae7d9d6294d.jpg', pos: '55% 45%' },
+      { name: 'Dinner out', src: './assets/d34f60fa73183132cdd7347d0cd4b671.jpg', pos: '50% 50%' }
+    ];
+    const brands = [
+      { slot: 'BRAND-01', name: 'Vincent Chase' },
+      { slot: 'BRAND-02', name: 'John Jacobs' },
+      { slot: 'BRAND-03', name: 'Hustlr' },
+      { slot: 'BRAND-04', name: 'Lenskart Air' },
+      { slot: 'BRAND-05', name: 'OWNDAYS' },
+      { slot: 'BRAND-06', name: 'Meller' }
+    ].map((b) => ({ name: b.name, src: shots[b.slot] }));
+
+    // BY STYLE
+    const chosen = S.picks || {};
+    const openRow = S.styleOpen;
+    const groups = [
+      { key: 'shape', label: 'Shape', kind: 'photo', options: [
+        { label: 'Round', src: './assets/66ad2b54c0e2ef22602469813ac728c8.jpg' },
+        { label: 'Square', src: './assets/11d06686f27e5f6bcc150611a6fb73e4.jpg' },
+        { label: 'Rectangle', src: './assets/49b361ca5fe5fa861379e2954e7c7399.jpg' },
+        { label: 'Cat-eye', src: './assets/358cb1f81487272cdbedd0138ed4f3a3.jpg' },
+        { label: 'Aviator', src: './assets/7e8de9c411ba8f2de89c080c743f1223.jpg' },
+        { label: 'Oval', src: './assets/0ba8cf7e08abdc1efe0250099b295541.jpg' } ] },
+      { key: 'rim', label: 'Rim type', kind: 'photo', options: [
+        { label: 'Full rim', src: './assets/eba3b7fcfebe8f24a3795556938dacdf.jpg' },
+        { label: 'Half rim', src: './assets/d24a0487d8002ab204d8d3a8f51df4e1.jpg' },
+        { label: 'Rimless', src: './assets/c8ddd68ecb841e1246cee3d6310b1278.jpg' } ] },
+      { key: 'mat', label: 'Material', kind: 'draw', options: [
+        { label: 'Metal', draw: { w: 60, h: 50, r: '50%', bw: 2 } },
+        { label: 'Non-metal', draw: { w: 60, h: 48, r: '10px', bw: 9 } } ] },
+      { key: 'col', label: 'Colour', kind: 'swatch', options: [
+        { label: 'Black', fill: '#000000' },
+        { label: 'Tortoise', fill: 'linear-gradient(135deg, #A9752F 0%, #3B2410 48%, #8A5A22 100%)' },
+        { label: 'Gold', fill: 'linear-gradient(135deg, #DEBE72 0%, #8A6B1E 100%)' },
+        { label: 'Silver', fill: 'linear-gradient(135deg, #E4E4E4 0%, #8C8C8C 100%)' },
+        { label: 'Clear', fill: '#ECECEC' },
+        { label: 'Blue', fill: '#2B4C8C' } ] }
+    ];
+
+    const CARD_W = 172, CARD_H = 172;
+    const buildOptions = (grp) => grp.options.map((o, oi) => {
+      const on = chosen[grp.key] === oi;
+      const base = 'flex: 0 0 auto; width: ' + CARD_W + 'px; cursor: pointer; display: flex; flex-direction: column;'
+        + ' align-items: stretch; border: 0; padding: 0; background: none; text-align: left';
+      const frame = 'width: ' + CARD_W + 'px; height: ' + CARD_H + 'px; overflow: hidden;'
+        + ' outline: ' + (on ? '2px solid #000000' : '0') + '; outline-offset: -2px';
+      const label = 'display: block; margin-top: 11px; font-family: \'Proxima Nova\', Mulish, sans-serif;'
+        + ' font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: '
+        + (on ? '#000000' : '#767676') + '; font-weight: ' + (on ? '600' : '400');
+      const pick = () => {
+        const p = {};
+        for (var k in chosen) { p[k] = chosen[k]; }
+        if (p[grp.key] === oi) { delete p[grp.key]; } else { p[grp.key] = oi; }
+        this.setState({ picks: p });
+      };
+      const out = { label: o.label, src: '', cardStyle: base, labelStyle: label, pick: pick,
+        photoWrap: 'display: none', swatchStyle: 'display: none', artStyle: 'display: none',
+        lensStyle: 'display: none', bridgeStyle: 'display: none' };
+
+      if (grp.kind === 'photo') {
+        out.src = o.src;
+        out.photoWrap = 'display: block; background: #F2F2F2; ' + frame;
+      } else if (grp.kind === 'swatch') {
+        out.swatchStyle = 'display: block; background: ' + o.fill + '; ' + frame
+          + '; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08)';
+      } else {
+        const d = o.draw;
+        out.artStyle = 'display: flex; align-items: center; justify-content: center; gap: 10px; background: #F2F2F2; ' + frame;
+        out.lensStyle = 'width: ' + d.w + 'px; height: ' + d.h + 'px; border-radius: ' + d.r
+          + '; border: ' + d.bw + 'px solid #000000; box-sizing: border-box; flex: 0 0 auto';
+        out.bridgeStyle = 'width: 14px; height: ' + d.bw + 'px; background: #000000; flex: 0 0 auto';
+      }
+      return out;
+    });
+
+    const styleRows = groups.map((gr, i) => {
+      const isOpen = openRow === i;
+      const sel = chosen[gr.key];
+      return {
+        num: '0' + (i + 1),
+        title: gr.label,
+        mark: isOpen ? '−' : '+',
+        chosen: sel != null ? gr.options[sel].label : '',
+        titleStyle: 'font-family: \'Playfair Display\', Georgia, serif; font-size: 25px; line-height: 1.1; color: '
+          + (isOpen ? '#000000' : '#141414'),
+        railWrap: isOpen ? 'display: block' : 'display: none',
+        options: buildOptions(gr),
+        toggle: () => this.setState({ styleOpen: isOpen ? -1 : i })
+      };
+    });
+
+    const named = [];
+    groups.forEach((gr) => { if (chosen[gr.key] != null) { named.push(gr.options[chosen[gr.key]].label); } });
+    const styleSummary = named.length ? named.join(' · ') : 'Everything, for now.';
+    let narrowed = 2400;
+    groups.forEach((gr) => { if (chosen[gr.key] != null) { narrowed = narrowed / gr.options.length; } });
+
+    const filterCount = Math.max(14, Math.round(narrowed / 2) * 2).toLocaleString('en-IN') + ' frames';
+
+    // COLLABS — horizontal
+    const collabs = [
+      { src: './assets/1843310327c4e8d6443a73ced70bb02f.jpg', name: 'The Key', house: 'Vincent Chase', pos: '50% 42%' },
+      { src: './assets/351b94519235c893e6af2201864bca0d.jpg', name: 'The Knight', house: 'Hustlr', pos: '50% 38%' },
+      { src: './assets/e0034653c6a7ec3b3b26fefa8abe89e3.jpg', name: 'The Wing', house: 'John Jacobs', pos: '50% 45%' },
+      { src: './assets/709aa80b4e7507f3985fcc3748ae4e51.jpg', name: 'The Court', house: 'Lenskart Air', pos: '50% 42%' }
+    ];
+
+    // USE CASE
+    const tallBox = 'position: relative; display: block; height: 220px; background: #F2F2F2; overflow: hidden';
+    const wideBox = 'position: relative; display: block; height: 220px; background: #F2F2F2; overflow: hidden; grid-column: span 2';
+    const uses = [
+      { name: 'Every day', note: 'Wear it and forget it', src: './assets/c81302c3cf73391e9d7939bdc61ca051.jpg', pos: '50% 28%', wrap: tallBox },
+      { name: 'Office look', note: 'Thin, light, formal', src: './assets/59cec4cbcaa0178743b0d45010bbd628.jpg', pos: '50% 30%', wrap: tallBox },
+      { name: 'Blue screen', note: 'For the hours you can\'t avoid', src: './assets/45ed9c687629f0cf185d2144051e2ece.jpg', pos: '50% 36%', wrap: tallBox },
+      { name: 'Party', note: 'Confetti, and no eye contact', src: './assets/626545f97a099dcdf13d2b3a7ff4a846.jpg', pos: '50% 46%', wrap: tallBox },
+      { name: 'All rounder', note: 'One pair, every situation', src: './assets/7f913c77822ec05afc41aa6ed74faea0.jpg', pos: '50% 52%', wrap: wideBox }
+    ];
+
+    // PRODUCTS
+    const all = [
+      { src: './assets/d1e296902b76f857ab82238a38fe1bfe.jpg', name: 'Icons Slim', price: 4000 },
+      { src: './assets/f7a4679e816fd02fd894698c42d5f4da.jpg', name: 'Edit 04', price: 800 },
+      { src: './assets/f1ff3dc0cc05da94f33e55b5acf21edb.jpg', name: 'Hustlr Z', price: 1500 },
+      { src: './assets/498a154db5c28d8d7efe84502db665e2.jpg', name: 'Air Flex', price: 2200 }
+    ];
+    const off = S.shuffle % all.length;
+    const picks = [0, 1, 2, 3].map((k) => all[(off + k) % all.length]);
+    const products = picks.map((p) => ({ src: p.src, name: p.name, price: rupee(p.price) }));
+
+    const nav = [
+      { label: 'Home', on: true,
+        d1: 'M3.2 8.4 10 3l6.8 5.4', d2: 'M5 9.6V16.4h10V9.6' },
+      { label: 'Stores', on: false,
+        d1: 'M10 17.2s5.4-4.6 5.4-8.6a5.4 5.4 0 0 0-10.8 0c0 4 5.4 8.6 5.4 8.6Z', d2: 'M10 10.6a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z' },
+      { label: 'Try at home', on: false,
+        d1: 'M2.6 10.6a2.8 2.8 0 1 0 5.6 0 2.8 2.8 0 0 0-5.6 0Zm9.2 0a2.8 2.8 0 1 0 5.6 0 2.8 2.8 0 0 0-5.6 0Z', d2: 'M8.2 10.1a2.6 2.6 0 0 1 3.6 0M2.6 10.1 1.4 7.6m16 2.5 1.2-2.5' },
+      { label: 'Eye test', on: false,
+        d1: 'M1.6 10S4.9 4.6 10 4.6 18.4 10 18.4 10 15.1 15.4 10 15.4 1.6 10 1.6 10Z', d2: 'M10 12.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8Z' },
+      { label: 'Orders', on: false,
+        d1: 'M4.4 3.4h11.2v13.2H4.4z', d2: 'M7.2 7.2h5.6M7.2 10.4h5.6M7.2 13.6h3.2' },
+      { label: 'Assistant', on: false,
+        d1: 'M10 2.8 11.6 7l4.2 1.6-4.2 1.6L10 14.4 8.4 10.2 4.2 8.6 8.4 7 10 2.8Z', d2: 'M15.4 13.2l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8Z' }
+    ].map((n) => ({
+      label: n.label, d1: n.d1, d2: n.d2,
+      ink: n.on ? '#000000' : '#8A8A8A',
+      style: 'flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 4px 1px 2px; min-height: 44px; text-decoration: none',
+      labelStyle: 'display: block; width: 100%; text-align: center; font-family: \'Proxima Nova\', Mulish, sans-serif; font-size: 8px; letter-spacing: 0.06em; line-height: 1.2; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: ' + (n.on ? '700' : '500') + '; color: ' + (n.on ? '#000000' : '#8A8A8A')
+    }));
+
+    return {
+      cycleHero: () => this.setState({ hero: (S.hero + 1) % heroes.length }),
+      heroWord: hero.word, heroSlot: hero.slot, heroNote: hero.note, heroPrice: hero.price,
+
+      toggleGold: () => this.setState({ gold: !S.gold }),
+      goldChipLabel: S.gold ? 'GOLD' : 'GOLD',
+      goldChipStyle: S.gold
+        ? 'background: ' + accent + '; color: #000000; border: 0; padding: 5px 9px; font-family: \'Proxima Nova\', Mulish, sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.2em; cursor: pointer'
+        : 'background: none; color: ' + goldInk + '; border: 0; border-bottom: 1px solid ' + goldInk + '; padding: 0 0 2px; font-family: \'Proxima Nova\', Mulish, sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 0.2em; cursor: pointer',
+      goldState: S.gold ? 'Member · renews Mar 2027' : 'Membership',
+      goldPitch: S.gold ? 'Everything below, already yours.' : 'Twenty per cent off, every frame, every time.',
+      goldRows: S.gold
+        ? [
+            { label: 'Saved this year', value: rupee(1240) },
+            { label: 'Eye tests used', value: '2 of 4' },
+            { label: 'Second pair', value: '½ price' }
+          ]
+        : [
+            { label: 'Off every frame', value: '20%' },
+            { label: 'Eye tests a year', value: '4' },
+            { label: 'Second pair', value: '½ price' }
+          ],
+      goldCta: S.gold ? 'View your benefits' : 'Join for ' + rupee(600) + ' a year',
+      goldCtaStyle: S.gold
+        ? 'background: none; color: #C9A24A; border: 1px solid #C9A24A; padding: 16px 32px; font-family: \'Proxima Nova\', Mulish, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer'
+        : 'background: #C9A24A; color: #000000; border: 0; padding: 17px 34px; font-family: \'Proxima Nova\', Mulish, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer',
+
+      deliverLine: '400059 · Tomorrow',
+      shopTabs: shopTabs,
+      shopCards: shopCards,
+      newIn: newIn,
+      occasions: occasions,
+      brands: brands,
+      styleRows: styleRows,
+      styleSummary: styleSummary,
+      filterCount: filterCount,
+      clearFilters: () => this.setState({ picks: {} }),
+      collabs: collabs,
+      uses: uses,
+
+      cmf: [
+        { kicker: 'Frame', name: 'Acetate, metal, TR90', note: 'Hand-polished, tested to 10,000 bends.', src: './assets/48d8139afaa9cbf5b195d0570f2e9f80.jpg', pos: '50% 55%' },
+        { kicker: 'Lens', name: 'Blue-cut to progressive', note: 'Cut and fitted in-house, to your power.', src: './assets/ea64e966838d87d8c248416475caf50f.jpg', pos: '50% 50%' },
+        { kicker: 'Technology', name: 'Lighter than water', note: 'Air frames from 6 grams.', src: './assets/14533a84fcbf1d23eb0f1ca8b6146993.jpg', pos: '50% 50%' }
+      ],
+
+      offers: [
+        { name: 'Home try-on', note: '5 frames, free, in an hour', cta: 'Book' },
+        { name: 'Free eye test', note: 'At home or in store', cta: 'Book' },
+        { name: 'Gold membership', note: 'The members’ price on every frame', cta: 'Join' },
+        { name: 'Lenskart Academy', note: 'Learn the craft', cta: 'Visit' }
+      ],
+
+      products: products,
+      shuffleProducts: () => this.setState({ shuffle: S.shuffle + 1 }),
+      forYouNote: 'From your last three try-ons',
+
+      nav: nav
+    };
+  }
+}
+</script>
+</body>
+</html>
